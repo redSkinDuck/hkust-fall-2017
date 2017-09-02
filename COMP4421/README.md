@@ -2,6 +2,8 @@
 
 ## Details
 
+| - | - |
+|--|--|
 | Instructor | CHUNG, Albert Chi Shing |
 | Website | [https://canvas.ust.hk/courses/13411](https://canvas.ust.hk/courses/13411) |
 | Lecture | Mo 1:30PM - 2:50PM G009A, CYT Bldg (80) <br /> Fr 9:00AM - 10:20AM G009A, CYT Bldg (80) |
