@@ -1,0 +1,41 @@
+#!/bin/bash
+
+echo 'fn? (1) breadth first search (2) depth first search (3) uniform cost search'
+
+read fnOpt
+
+case $fnOpt in
+  1)
+    fn=bfs
+    ;;
+  2)
+    fn=dfs
+    ;;
+  3)
+    fn=ucs
+    ;;
+  *)
+    exit -1
+esac
+
+echo $fn
+
+echo 'layout?'
+
+layouts=(bigCorners mediumMaze smallSafeSearch tinySearch bigMaze contoursMaze greedySearch testMaze mediumCorners mediumDottedMaze smallMaze tinySafeSearch openMaze tinyMaze testSearch tinyCorners)
+
+for i in "${!layouts[@]}"; do
+  printf "(%s)\t%s\n" "$i" "${layouts[$i]}"
+done
+
+read layoutOpt
+
+layout=${layouts[$layoutOpt]}
+
+echo $layout
+
+cd assignment1
+
+python pacman.py -p SearchAgent -a fn=$fn,prob=FoodSearchProblem -l $layout
+
+cd -
