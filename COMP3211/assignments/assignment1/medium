@@ -1,0 +1,158 @@
+fn? (1) breadth first search (2) depth first search (3) uniform cost search
+1
+bfs
+layout?
+(0)	bigCorners
+(1)	mediumMaze
+(2)	smallSafeSearch
+(3)	tinySearch
+(4)	bigMaze
+(5)	contoursMaze
+(6)	greedySearch
+(7)	testMaze
+(8)	mediumCorners
+(9)	mediumDottedMaze
+(10)	smallMaze
+(11)	tinySafeSearch
+(12)	openMaze
+(13)	tinyMaze
+(14)	testSearch
+(15)	tinyCorners
+1
+mediumMaze
+[SearchAgent] using function bfs
+[SearchAgent] using problem type FoodSearchProblem
+Path found with total cost of 68 in 0.0 seconds
+Search nodes expanded: 269
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        <<<<<<<<<>%
+% %%%%%%%%%%%%%%%%%%%%%%%v%%%%%%%% %
+% %%   %   %      %%%%%%%v>>%%     %
+% %% % % % % %%%% %%%%%%%%%v%% %%%%%
+% %% % % % %        <<<<^%%v%%     %
+% %% % % % % % %%%% v%%%<<<v%%%%%% %
+% %  % % %   %    %%v%%%%%%%%      %
+% %% % % %%%%%%%% %%v>>>>>>>%% %%%%%
+% %% %   %%       %%%%%%%%%v%%     %
+%    %%%%%% %%%%%%%      %%v%%%%%% %
+%%%%%%      %       %%%% %%v%      %
+%      %%%%%% %%%%% %    %%v%% %%%%%
+% %%%%%%      %       %%%%%v%%     %
+%        %%%%%% %%%%%%%%%%%v%%  %% %
+%%%%%%%%%%<<<<<<<<<<<<<<<<<v%%%%%% %
+%><<<<<<<<v%%%%%%%%%%%%%%%%        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Score: 442
+
+Pacman emerges victorious! Score: 442
+Average Score: 442.0
+Scores:        442
+Win Rate:      1/1 (1.00)
+Record:        Win
+/home/tommyku/git/hkust-fall-2017/COMP3211/assignments/assignment1
+➜  assignment1 git:(master) ✗ ./run
+fn? (1) breadth first search (2) depth first search (3) uniform cost search
+2
+dfs
+layout?
+(0)	bigCorners
+(1)	mediumMaze
+(2)	smallSafeSearch
+(3)	tinySearch
+(4)	bigMaze
+(5)	contoursMaze
+(6)	greedySearch
+(7)	testMaze
+(8)	mediumCorners
+(9)	mediumDottedMaze
+(10)	smallMaze
+(11)	tinySafeSearch
+(12)	openMaze
+(13)	tinyMaze
+(14)	testSearch
+(15)	tinyCorners
+1
+mediumMaze
+[SearchAgent] using function dfs
+[SearchAgent] using problem type FoodSearchProblem
+Path found with total cost of 130 in 0.0 seconds
+Search nodes expanded: 146
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>%
+%v%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%% %
+%v%%^>>%^>>%      %%%%%%%   %%     %
+%v%%^%v%^%v% %%%% %%%%%%%%% %% %%%%%
+%v%%^%v%^%v%^>>>>>>>>    %% %%     %
+%v%%^%v%^%v%^% %%%% v%%%    %%%%%% %
+%v% ^%v%^%v>>%    %%v%%%%%%%%      %
+%v%%^%v%^%%%%%%%% %%v>>>>>>>%% %%%%%
+%v%%^%v>>%%       %%%%%%%%%v%%     %
+%v>>>%%%%%% %%%%%%%      %%v%%%%%% %
+%%%%%%      %       %%%% %%v%      %
+%      %%%%%% %%%%% %    %%v%% %%%%%
+% %%%%%%      %       %%%%%v%%     %
+%        %%%%%% %%%%%%%%%%%v%%  %% %
+%%%%%%%%%%<<<<<<<<<<<<<<<<<v%%%%%% %
+%><<<<<<<<v%%%%%%%%%%%%%%%%        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Score: 380
+
+Pacman emerges victorious! Score: 380
+Average Score: 380.0
+Scores:        380
+Win Rate:      1/1 (1.00)
+Record:        Win
+/home/tommyku/git/hkust-fall-2017/COMP3211/assignments/assignment1
+➜  assignment1 git:(master) ✗ ./run
+fn? (1) breadth first search (2) depth first search (3) uniform cost search
+3
+ucs
+layout?
+(0)	bigCorners
+(1)	mediumMaze
+(2)	smallSafeSearch
+(3)	tinySearch
+(4)	bigMaze
+(5)	contoursMaze
+(6)	greedySearch
+(7)	testMaze
+(8)	mediumCorners
+(9)	mediumDottedMaze
+(10)	smallMaze
+(11)	tinySafeSearch
+(12)	openMaze
+(13)	tinyMaze
+(14)	testSearch
+(15)	tinyCorners
+1
+mediumMaze
+[SearchAgent] using function ucs
+[SearchAgent] using problem type FoodSearchProblem
+Path found with total cost of 68 in 0.0 seconds
+Search nodes expanded: 269
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        <<<<<<<<<>%
+% %%%%%%%%%%%%%%%%%%%%%%%v%%%%%%%% %
+% %%   %   %      %%%%%%%v>>%%     %
+% %% % % % % %%%% %%%%%%%%%v%% %%%%%
+% %% % % % %        <<<<^%%v%%     %
+% %% % % % % % %%%% v%%%<<<v%%%%%% %
+% %  % % %   %    %%v%%%%%%%%      %
+% %% % % %%%%%%%% %%v>>>>>>>%% %%%%%
+% %% %   %%       %%%%%%%%%v%%     %
+%    %%%%%% %%%%%%%      %%v%%%%%% %
+%%%%%%      %       %%%% %%v%      %
+%      %%%%%% %%%%% %    %%v%% %%%%%
+% %%%%%%      %       %%%%%v%%     %
+%        %%%%%% %%%%%%%%%%%v%%  %% %
+%%%%%%%%%%<<<<<<<<<<<<<<<<<v%%%%%% %
+%><<<<<<<<v%%%%%%%%%%%%%%%%        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Score: 442
+
+Pacman emerges victorious! Score: 442
+Average Score: 442.0
+Scores:        442
+Win Rate:      1/1 (1.00)
+Record:        Win
+/home/tommyku/git/hkust-fall-2017/COMP3211/assignments/assignment1

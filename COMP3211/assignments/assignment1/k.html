@@ -1,0 +1,256 @@
+<h1 id="comp-3211-homework-1">COMP 3211 Homework 1</h1>
+<h2 id="by-ku-chun-kit-20123470">By Ku Chun Kit 20123470</h2>
+<h3 id="how-to-read-the-maps">How to read the maps</h3>
+<p>I modified the program to show the path taken by pacman. In the following example, <code>&gt;</code> means pacman moves right, <code>&lt;</code> means left, <code>^</code> means up and <code>v</code> means down.</p>
+<p>If a location is visited twice or more, it will only shows the last path taken by pacman. I have added annotations to help you understand pacman's path.</p>
+<p>In an example below, pacman starts from the middle, and runs from left to right to go downwards until it hits to bottom-left corner.</p>
+<pre><code>%%%%%%%%%%%%%%%%%%%%%
+%                   %
+%                   %
+%                   %
+%                   %
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&gt;         %
+%v&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%
+%v&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%
+%&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%
+%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<h3 id="layout-1-contoursmaze">Layout 1: contoursMaze</h3>
+<p><code>contoursMaze</code> is a layout with the pacman starting in the middle and the food is at the bottom-left corner. In this map, breadth first search and uniform cost search performs identically. Depth first search performs with less nodes expanded yet the solution is more costly.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Algorithm</th>
+<th align="left">Nodes expanded</th>
+<th align="left">Total cost</th>
+<th align="left">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BFS/UCS</td>
+<td align="left">170</td>
+<td align="left">13</td>
+<td align="left">497</td>
+</tr>
+<tr class="even">
+<td align="left">DFS</td>
+<td align="left">85</td>
+<td align="left">85</td>
+<td align="left">425</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<pre><code>%%%%%%%%%%%%%%%%%%%%%
+%                   %
+%                   %
+%                   %
+%                   %
+%         &gt;         %
+%         v         %
+%         v         %
+%         v         %
+%&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v         %
+%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<p><small>BFS/UCS have the same path</small></p>
+<hr />
+<pre><code>%%%%%%%%%%%%%%%%%%%%%
+%                   %
+%                   %
+%                   %
+%                   %
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&gt;         %
+%v&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%
+%v&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%
+%&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%
+%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<p><small>DFS takes a longer path</small></p>
+<hr />
+<p>Breadth first search and uniform cost search perform with exactly the same performance because the cost for uniform cost search is set as depth of the search tree, meaning it's always less costly to explore sibling nodes than to explore child nodes, giving it exactly the same behavior as breadth first search.</p>
+<p>This way, breadth first search and uniform cost search would might expand more nodes than depth first search before reaching to a solution as it searches in all directions - even going up or right. It also guarantee the least costly solution because paths with the least costs are discovered first as it searches down the tree.</p>
+<p>Depth first search results in less nodes expanded because it takes the first solution that it found regardless of it's cost. This does not mean that depth first search always expand the least nodes, as seen if the food is placed on the top-right corner, the nodes expanded will be 170, which is close to 167, what breadth first search achieved. Depth first search just happened to find the solution on it's first run digging down the tree in the original map.</p>
+<hr />
+<pre><code>%%%%%%%%%%%%%%%%%%%%%
+%^&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&lt;%
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;^%
+%^&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;^        %
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;^%
+%v&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%
+%                   %
+%                   %
+%                   %
+%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<p><small>DFS, food at top-right corner. Pacman goes down one row before going back up for the food.</small></p>
+<hr />
+<pre><code>%%%%%%%%%%%%%%%%%%%%%
+%         ^&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&lt;%
+%         ^         %
+%         ^         %
+%         ^         %
+%         &gt;         %
+%                   %
+%                   %
+%                   %
+%                   %
+%%%%%%%%%%%%%%%%%%%%%
+</code></pre>
+<p><small>BFS, food at top-right corner. Pacman goes directly up for food.</small></p>
+<hr />
+<h3 id="layout-2-mediummaze">Layout 2: mediumMaze</h3>
+<p><code>mediumMaze</code> is a maze-like layout with the pacman starting on the top-right corner and food is at the bottom-left corner. Again in this map breadth first search and uniform cost search performs identically. This wouldn't have differed due to the underlying cost assignment favors breadth first search-like behavior over depth first search-like one.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Algorithm</th>
+<th align="left">Nodes expanded</th>
+<th align="left">Total cost</th>
+<th align="left">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BFS/UCS</td>
+<td align="left">269</td>
+<td align="left">68</td>
+<td align="left">442</td>
+</tr>
+<tr class="even">
+<td align="left">DFS</td>
+<td align="left">146</td>
+<td align="left">130</td>
+<td align="left">380</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<pre><code>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&gt;%
+% %%%%%%%%%%%%%%%%%%%%%%%v%%%%%%%% %
+% %%   %   %      %%%%%%%v&gt;&gt;%%     %
+% %% % % % % %%%% %%%%%%%%%v%% %%%%%
+% %% % % % %        &lt;&lt;&lt;&lt;^%%v%%     %
+% %% % % % % % %%%% v%%%&lt;&lt;&lt;v%%%%%% %
+% %  % % %   %    %%v%%%%%%%%      %
+% %% % % %%%%%%%% %%v&gt;&gt;&gt;&gt;&gt;&gt;&gt;%% %%%%%
+% %% %   %%       %%%%%%%%%v%%     %
+%    %%%%%% %%%%%%%      %%v%%%%%% %
+%%%%%%      %       %%%% %%v%      %
+%      %%%%%% %%%%% %    %%v%% %%%%%
+% %%%%%%      %       %%%%%v%%     %
+%        %%%%%% %%%%%%%%%%%v%%  %% %
+%%%%%%%%%%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%% %
+%&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%%%%%%%%%%%%        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<p><small>BFS/UCS</small></p>
+<hr />
+<pre><code>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&gt;%
+%v%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%% %
+%v%%^&gt;&gt;%^&gt;&gt;%      %%%%%%%   %%     %
+%v%%^%v%^%v% %%%% %%%%%%%%% %% %%%%%
+%v%%^%v%^%v%^&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;    %% %%     %
+%v%%^%v%^%v%^% %%%% v%%%    %%%%%% %
+%v% ^%v%^%v&gt;&gt;%    %%v%%%%%%%%      %
+%v%%^%v%^%%%%%%%% %%v&gt;&gt;&gt;&gt;&gt;&gt;&gt;%% %%%%%
+%v%%^%v&gt;&gt;%%       %%%%%%%%%v%%     %
+%v&gt;&gt;&gt;%%%%%% %%%%%%%      %%v%%%%%% %
+%%%%%%      %       %%%% %%v%      %
+%      %%%%%% %%%%% %    %%v%% %%%%%
+% %%%%%%      %       %%%%%v%%     %
+%        %%%%%% %%%%%%%%%%%v%%  %% %
+%%%%%%%%%%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%% %
+%&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%%%%%%%%%%%%        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<p><small>DFS, note that it favors leftwards operation because it's the first possible action it gets when exploring the tree</small></p>
+<p>Here we are seeing how the supposedly better uniform cost search does not out-perform the two other algorithms due the flaw in cost setting. The current experiment setting wouldn't have any impact, until some nodes are set to be more costly.</p>
+<p>We also observe again depth first search favors left-downwards path over other possibilities because leftward action is first action it sees in <code>getPossibleActions</code>. The list of possible when printed out from the source is ordered as <code>West, Stop, East, North, South</code>.</p>
+<h3 id="layout-3-mediumdottedmaze">Layout 3: mediumDottedMaze</h3>
+<p><code>mediumDottedMaze</code> is a layout with the pacman starting at the top-right corner and the foods are distributed on the right, with one lone food at the bottom-left corner. Breadth first search and uniform cost search performs identically. Depth first search has really taken a dumb path to run back-and-forth, up-and-down between foods instead of getting foods with the most direct path due to it's tendency to go left.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Algorithm</th>
+<th align="left">Nodes expanded</th>
+<th align="left">Total cost</th>
+<th align="left">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BFS/UCS</td>
+<td align="left">3696</td>
+<td align="left">74</td>
+<td align="left">646</td>
+</tr>
+<tr class="even">
+<td align="left">DFS</td>
+<td align="left">2870</td>
+<td align="left">2650</td>
+<td align="left">-1930</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<pre><code>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 &gt;%
+% %%%%%%%%%%%%%%%%%%% %%% %%%%%%%%v%
+% %%   %   %      %%% %%%   %%&lt;&lt;&lt;&lt;v%
+% %% % % % % %%%% %%%%%%%%% %%v%%%%%
+% %% % % % % %    %%     %% %%v&gt;&gt;&gt;&gt;%
+% %% % % % % % %%%%  %%%    %%%%%%v%
+% %  % % %   %    %% %%%%%%%% &lt;&lt;&lt;&lt;v%
+% %% % % %%%%%%%% %%        %%v%%%%%
+% %% %   %%       %%%%%%%%% %%v&gt;&gt;&gt;&gt;%
+%    %%%%%% %%%%%%%      %% %%%%%%v%
+%%%%%%      %       %%%% %% % &lt;&lt;&lt;&lt;v%
+%      %%%%%% %%%%% %    %% %%v%%%%%
+% %%%%%%      %       %%%%% %%v&gt;&gt;&gt;&gt;%
+%        %%%%%% %%%%%%%%%%% %%  %%v%
+%%%%%%%%%%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;^%%%%%%v%
+%&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%%%%%%%%%%%%&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<p><small>BFS/UCS found the optimal solution with least cost</small></p>
+<hr />
+<pre><code>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%^&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%
+%^%%%%%%%%%%%%%%%%%%% %%% %%%%%%%%v%
+%^%%&lt;&lt;^%&lt;&lt;^%&lt;&lt;&lt;&lt;&lt;^%%% %%%   %%&lt;&lt;&lt;&lt;v%
+%^%%v%^%v%^%v%%%%^%%%%%%%%% %%v%%%%%
+%^%%v%^%v%^%v%^&gt;&gt;&gt;%%     %% %%v&gt;&gt;&gt;&gt;%
+%^%%v%^%v%^%v%^%%%%  %%%    %%%%%%v%
+%^% v%^%v%&lt;&lt;v%&lt;&lt;&lt;^%% %%%%%%%% &lt;&lt;&lt;&lt;v%
+%^%%v%^%v%%%%%%%%^%%        %%v%%%%%
+%^%%v%&lt;&lt;v%%^&gt;&gt;&gt;&gt;&gt;&gt;%%%%%%%%% %%v&gt;&gt;&gt;&gt;%
+%&lt;&lt;&lt;v%%%%%%^%%%%%%%&lt;&lt;&lt;&lt;&lt;^%% %%%%%%v%
+%%%%%%^&gt;&gt;&gt;&gt;&gt;%&lt;&lt;&lt;&lt;&lt;&lt;v%%%%^%% % &lt;&gt;&gt;&lt;v%
+%^&gt;&gt;&gt;&gt;&gt;%%%%%%v%%%%%v%^&gt;&gt;&gt;%% %%v%%%%%
+%^%%%%%%&lt;&lt;&lt;&lt;&lt;v%^&gt;&gt;&gt;&gt;&gt;&gt;%%%%% %%v&gt;&gt;&gt;&gt;%
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%%^%%%%%%%%%%% %%  %%v%
+%%%%%%%%%%^&gt;&gt;&gt;&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;^%%%%%%v%
+%&lt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%%%%%%%%%%%%%%%%&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<p><small>DFS, pacman goes from the top, getting one food, going through the left part of the maze to get one food near the bottom-right corner, then go back for foods on top repeatedly until it gets them all due to it's tendency to go left</small></p>
+<hr />
+<p>The way the tree expands have great impact on how depth first search behave. For example, I changed direction it loops through in <code>FoodSearchProblem#getSuccessors</code> from <code>[Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]</code> to <code>[Directions.SOUTH, Directions.WEST, Directions.EAST, Directions.NORTH]</code> and the total cost of the solution was reduced to 1338 and nodes expanded 1507.</p>
+<pre><code>%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;^&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;%
+%v%%%%%%%%%%%%%%%%%%% %%%^%%%%%%%%v%
+%v%%^&gt;&gt;%^&gt;&gt;%^&gt;&gt;&gt;&gt;&gt;%%% %%%&lt;&lt;^%%&lt;&lt;&lt;&lt;v%
+%v%%^%v%^%v%^%%%%v%%%%%%%%%^%%v%%%%%
+%v%%^%v%^%v%^%&lt;&lt;&lt;v%%^&gt;&gt;&gt;&gt;%%^%%v&gt;&gt;&gt;&gt;%
+%v%%^%v%^%v%^%v%%%% ^%%%v&gt;&gt;&gt;%%%%%%v%
+%v% ^%v%^%v&gt;&gt;%v&gt;&gt;&gt;%%^%%%%%%%% &lt;&lt;&lt;&lt;v%
+%v%%^%v%^%%%%%%%%v%%&lt;&lt;&lt;&lt;&lt;&lt;&lt;^%%v%%%%%
+%v%%^%v&gt;&gt;%%&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%%%%%^%%v&gt;&gt;&gt;&gt;%
+%v&gt;&gt;&gt;%%%%%%v%%%%%%%^&gt;&gt;&gt;&gt;&gt;%%^%%%%%%v%
+%%%%%%&lt;&lt;&lt;&lt;&lt;v%^&gt;&gt;&gt;&gt;&gt;&gt;%%%%v%%^% &lt;&lt;&lt;&lt;v%
+%&lt;&lt;&lt;&lt;&lt;v%%%%%%^%%%%% %&lt;&lt;&lt;v%%^%%v%%%%%
+%v%%%%%%^&gt;&gt;&gt;&gt;&gt;%&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%^%%v&gt;&gt;&gt;&gt;%
+%v&gt;&gt;&gt;&gt;&gt;&gt;&gt;%%%%%%v%%%%%%%%%%%^%%  %%v%
+%%%%%%%%%%&lt;&lt;&lt;&lt;&lt;v&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;^%%%%%%v%
+%&gt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%%%%%%%%%%%%%%%%&lt;&lt;&lt;&lt;&lt;&lt;&lt;v%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</code></pre>
+<p><small>DFS takes a different path (pretty difficult to visualize here) when the order of possible actions is altered (i.e. the left-most node is a different action)</small></p>

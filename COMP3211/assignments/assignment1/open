@@ -1,0 +1,111 @@
+bfs
+openMaze
+[SearchAgent] using function bfs
+[SearchAgent] using problem type FoodSearchProblem
+Path found with total cost of 54 in 0.2 seconds
+Search nodes expanded: 682
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                  >%
+%            %                     v%
+%            %                     v%
+%            %                     v%
+%            %                     v%
+%            %     <<<<<<<<<<<<<<<<v%
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%%%%%%%%%%%%%%     v%%%%%%%%%%%%%%%%%
+%            %     v                %
+%            %     v                %
+%            %     v                %
+%                  v                %
+%                  v                %
+%                  v                %
+%><<<<<<<<<<<<<<<<<v                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Score: 456
+
+Pacman emerges victorious! Score: 456
+Average Score: 456.0
+Scores:        456
+Win Rate:      1/1 (1.00)
+Record:        Win
+
+dfs
+openMaze
+[SearchAgent] using function dfs
+[SearchAgent] using problem type FoodSearchProblem
+Path found with total cost of 298 in 0.2 seconds
+Search nodes expanded: 576
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             <<<<<<<<<<<<<<<<<<<<<>%
+%            %v>>>>>>>>>>>>>>>>>>>>>%
+%            %<<<<<<<<<<<<<<<<<<<<<v%
+%            %v>>>>>>>>>>>>>>>>>>>>>%
+%            %<<<<<<<<<<<<<<<<<<<<<v%
+%            %v>>>>>                %
+%            %<<<<<v%               %
+%            %v>>>>>%               %
+%            %<<<<<v%               %
+%            %v>>>>>%               %
+%            %<<<<<v%               %
+%            %v>>>>>%               %
+%            %<<<<<v%               %
+%%%%%%%%%%%%%%v>>>>>%%%%%%%%%%%%%%%%%
+%            %<<<<<v                %
+%            %v>>>>>>>>>>>>>>>>>>>>>%
+%            %<<<<<<<<<<<<<<<<<<<<<v%
+%<<<<<<<<<<<<<v                     %
+%v>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>%
+%<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<v%
+%^                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Score: 212
+
+Pacman emerges victorious! Score: 212
+Average Score: 212.0
+Scores:        212
+Win Rate:      1/1 (1.00)
+Record:        Win
+
+ucs
+openMaze
+[SearchAgent] using function ucs
+[SearchAgent] using problem type FoodSearchProblem
+Path found with total cost of 54 in 0.2 seconds
+Search nodes expanded: 682
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                  >%
+%            %                     v%
+%            %                     v%
+%            %                     v%
+%            %                     v%
+%            %     <<<<<<<<<<<<<<<<v%
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%            %     v%               %
+%%%%%%%%%%%%%%     v%%%%%%%%%%%%%%%%%
+%            %     v                %
+%            %     v                %
+%            %     v                %
+%                  v                %
+%                  v                %
+%                  v                %
+%><<<<<<<<<<<<<<<<<v                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Score: 456
+
+Pacman emerges victorious! Score: 456
+Average Score: 456.0
+Scores:        456
+Win Rate:      1/1 (1.00)
+Record:        Win
+/home/tommyku/git/hkust-fall-2017/COMP3211/assignments/assignment1

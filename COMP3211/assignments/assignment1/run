@@ -36,6 +36,6 @@ echo $layout
 
 cd assignment1
 
-python pacman.py -p SearchAgent -a fn=$fn,prob=FoodSearchProblem -l $layout
+python pacman.py -p SearchAgent -a fn=$fn,prob=FoodSearchProblem -l $layout --frameTime=0.005
 
 cd -
