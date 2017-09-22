@@ -1,0 +1,43 @@
+# w3l2
+
+Risks of shorting
+  - unable to borrow
+  - could lose an infinite amount because the price can go all the way up
+    - whereas in long you lose only 100% of your investment
+    - short squeeze
+      - gotta face with margin call asking for more collateral
+      - even if it goes down in the long run, marign call will force to close the position
+        if not enough collateral
+  - "mother of all short squeezes"
+    - http://www.reuters.com/article/us-volkswagen/short-sellers-make-vw-the-worlds-priciest-firm-idUSTRE49R3I920081028
+  - no need to buy back (cover the position) after bankruptcy
+    - bank still could call back, then you need to buy it back
+    - realize capital gain (buy back at $0.000001) at the point of buy back, which will be taxed
+
+Expected return
+  - given SD=15%, avg=10% per year
+  - 95% CI = [10% - 1.96 x SD, 10% + 1.96 x SD]
+  - 25 year expected return = 1.1^25 - 1 (compound)
+    or, 1.1 x 25 - 1 = 250% (simple)
+  - ? 25 year expected volatility = sqrt(25) x 15% = 75% ? why sqrt
+  - 95% CI in 25 years = [100%, 400%]
+    - better than 1 year
+    - kinda neat
+    - prefer long term investment over day-to-day trade
+    - bigger risk too (4 times the change)
+
+Value at Risk
+  - ? useful for bond more
+  - assume normal distribution
+  - 5th percentile
+  - only 5% probability the return is less than this
+  - 90% CI
+  - regardless of the distribution
+    - can just discount 5% from the left, and from the right
+    - that's the 5th percentile
+  - if 3 bonds have 99% of 1% return and 1% of -100% return
+    - they are all 1%, so no default
+    - if use SD of realized return before any would have went down, SD is 0%
+    - still may go down at any time, SD is a bad measure for bond in this way
+
+Not sure why he talks about https://en.wikipedia.org/wiki/Martingale_(betting_system)
