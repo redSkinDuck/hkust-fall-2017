@@ -1,0 +1,41 @@
+# w3l2
+
+FFT
+  - low frequency components: rough shape of things
+  - high frequency components: details, sharp edges
+
+Image power
+  - Amount of power a filter 'encloses' (taken as 1 in ideal filter, anything outside the region is taken as 0)
+  - Computed using the real and imaginary components R(u,v)^2 + I(u, v)^2
+  - Power percentage with respect to toal power image Pt
+  - Lower power, less high frequency components, blurrier image
+
+Ideal filter
+  - step function
+  - ringing artifacts due to sinc function with high frequency components missing (less sharp edges)
+
+Butterworth filters
+  - smoother cut off
+  - higher power n, sharper cut off (try taking derivative in p.44)
+  - changing n alone will make it more steep, thus creating ripple effect like ideal filter
+  - coefficient a (alpha) less than 1 can make the curve smoother
+    - a increases, slope is smaller and H at cut off frequency is decreasing
+    - like pushing the curve down, see p.46
+
+Gaussian lowpass filter
+  - D0 as in variance in a distribution, higher D0, wider curve and less steep in *frequency domain* (see p.50)
+  - p.51 you can convert this gaussian filter in frequency domain into a filter in spacial domain
+  - standard deviation is inversely proportional to the cut off frequency D0 in *spacial domain* (p.52)
+  - their effect are opposite (SD and D0)
+  - for higher SD in spacial domain, it represents averaging with higher structuring element size
+  - the same effect is achieved in frequency domain with lower D0 (higher SD lower D0), in which high frequency
+    information are omitted, giving a blurrier image
+  - examples show darker image border because of zero padding, this effect can be removed using mirroring
+
+High pass filter
+  - high pass filter = 1 - low pass filter (in frequency domain)
+
+Rayleigh noise
+  - favors positive side because the noise is taken from magnitude of a vector (x, y)
+    - M = sqrt(x^2 + y^2), which is always positive, and x, y corrupted by noise
+  - em method (check!) /mean + variance methods (set up two equations) in one region to find a and b
