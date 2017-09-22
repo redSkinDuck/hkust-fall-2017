@@ -1,0 +1,61 @@
+# ISOM3180 w3l2
+
+Switch collision
+  - layer 2 device
+  - http://vishalp-network.blogspot.hk/2010/05/switches.html
+  - dynamic MAC address table
+    - flood when no such entry
+    - http://www.pearsonitcertification.com/articles/article.aspx?p=2339639&seqNum=3
+    - learn about port and MAC address from source whenever a source communicates
+  - create collision-free environment
+    - dedicated path (one port to one end device)
+    - full duplex: send/receive collision
+    - memory buffering: simultaneous send/receive = congestion
+  - microsegmentation
+    - one port, one device
+  - ? would network of multiple switches work (switch to switch) without the need of a router?
+    - ? does one switch MAC address table contains MAC address to other switches? (otherwise, how to route)
+    - ! will talk about towards the end of the course (class?
+    - communicate from one network to somewhere far away
+
+Hub collision
+  - layer 1 device
+  - may not have dedicated path, full duplex, or memory buffering
+  - collision happens at path to the device
+
+Router
+  - layer 3 device
+  - connection between routers are called serial interface
+    - http://fschub.com/wp-content/uploads/2017/05/router-Cisco-rear-panel.jpg
+    - http://www.dantraknet.com/ebay/WIC2T.jpg
+  - only filtering and forwarding
+    - don't flood
+    - discard if router does not contain the dest IP in IP table
+    - IP is assigned once an end device connects
+  - use routing protocol to complete IP table (https://en.wikipedia.org/wiki/Routing_protocol)
+    - configured by admin
+
+MAC addres
+  - 24 + 24 = 48 bits
+  - in hexadecimal numbers (4 bit x 6 x 2)
+    - 00-05-9A-3C-78-00
+    - 00:05:9A:3C:78:00
+    - 0005.9A3C.7800
+  - Organizationally unique identifier (OUI)
+    - IEEE assigned to each vendor (must use)
+  - Vendor assigned number
+    - unique per OUI for each NIC
+
+Carrier Sense Multiple Access with Collision Detection (CSMA/CD)
+  - multiple devices connected via one media
+  - less optimal
+  - avoid collision
+  - fallback even if collision happens
+  1. wait for silence in the media (Carrier Sense (the media))
+  2. send and wait for collision (Multiple Access)
+  3. done if no collision happens
+  4. senders sense the collision, stop sneding data, send jamming signal (32 bits of 1s and 0s)
+     - jamming signal won't collide
+     - https://en.wikipedia.org/wiki/Carrier-sense_multiple_access_with_collision_detection#Jam_signal
+  5. all devices set semi-random back-off timer
+  6. repeat when the device's timer expires
